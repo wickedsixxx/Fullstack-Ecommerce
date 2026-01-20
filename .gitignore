@@ -3,6 +3,7 @@
 bin/
 obj/
 *.sln.dotSettings.user
+server/appsettings.Development.json
 
 # Node & Frontend
 node_modules/

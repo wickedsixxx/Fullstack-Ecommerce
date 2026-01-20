@@ -9,7 +9,7 @@ test('should call onApplyDiscount with 10 when SAVE10 is entered', () => {
   const input = screen.getByTestId('discount-input');
   const btn = screen.getByTestId('apply-discount-btn');
 
-  // Input'a yazı yazma simülasyonu
+  
   fireEvent.change(input, { target: { value: 'SAVE10' } });
   fireEvent.click(btn);
 

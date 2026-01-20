@@ -2,6 +2,18 @@ var builder = WebApplication.CreateBuilder(args);
 
 // --- 1. SERVİS KAYITLARI (DEPENDENCY INJECTION) ---
 
+// CORS Politikası Tanımlama
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:3000") // React'in çalıştığı adres
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
+
 builder.Services.AddControllers();
 // Swagger/OpenAPI desteği (.NET 9 için)
 builder.Services.AddOpenApi();

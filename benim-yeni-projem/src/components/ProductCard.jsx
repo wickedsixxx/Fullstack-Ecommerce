@@ -15,4 +15,4 @@ const ProductCard = ({ productName, price, icon, quantity, onQuantityChange }) =
   );
 };
 
-export default ProductCard; // BU SATIR ÇOK ÖNEMLİ!
+export default ProductCard; 

@@ -3,7 +3,7 @@ import ProductCard from "./components/ProductCard";
 import DiscountInput from "./components/DiscountInput";
 import "./App.css";
 
-// Sabit verileri dışarı taşıyarak render maliyetini düşürüyoruz
+
 const PRODUCT_LIST = [
   { id: 1, name: "iPhone 15", price: 3000, stripePriceId: 'price_1Slps5JOa0r7hJuAPezmctgj', icon: "📱" },
   { id: 2, name: "MacBook Pro", price: 5000, stripePriceId: 'price_1SlVbRJOa0r7hJuAYbsRvBIH', icon: "💻" },
@@ -11,7 +11,7 @@ const PRODUCT_LIST = [
 ];
 
 function App() {
-  // --- STATE ---
+  
   const [cart, setCart] = useState(() => {
     const saved = localStorage.getItem("appleCart");
     return saved ? JSON.parse(saved) : {};
@@ -20,12 +20,12 @@ function App() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [orderStatus, setOrderStatus] = useState("");
 
-  // --- EFFECTS ---
+  
   useEffect(() => {
     localStorage.setItem("appleCart", JSON.stringify(cart));
   }, [cart]);
 
-  // --- HESAPLAMALAR ---
+ 
   const totalAmount = useMemo(() => {
     const baseTotal = PRODUCT_LIST.reduce((total, product) => {
       return total + (cart[product.id] || 0) * product.price;
@@ -33,13 +33,13 @@ function App() {
     return baseTotal - (baseTotal * discountRate) / 100;
   }, [cart, discountRate]);
 
-  // --- AKSİYONLAR ---
+  
   const handleCheckout = async () => {
-    // 1. DÖNÜŞTÜRME
+    
     const itemsForApi = Object.keys(cart)
       .filter((id) => cart[id] > 0)
       .map((id) => {
-        // HATA DÜZELTİLDİ: productList -> PRODUCT_LIST
+        
         const product = PRODUCT_LIST.find((p) => p.id === parseInt(id));
         return {
           stripePriceId: product.stripePriceId,
@@ -52,8 +52,8 @@ function App() {
       return;
     }
 
-    // 2. İŞLEM BAŞLATMA
-    setIsProcessing(true); // Butonu pasif yap
+    
+    setIsProcessing(true); 
     setOrderStatus("Ödeme hazırlanıyor... 💳");
 
     const payload = {

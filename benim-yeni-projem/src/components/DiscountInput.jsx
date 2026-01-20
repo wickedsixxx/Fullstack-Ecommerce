@@ -4,9 +4,9 @@ const DiscountInput = ({ onApplyDiscount }) => {
   const [code, setCode] = useState("");
 
   const handleApply = () => {
-    // SAVE10 kodu girilirse indirimi yukarıya bildir
+    
     if (code.toUpperCase() === "SAVE10") {
-      onApplyDiscount(10); // %10 indirim
+      onApplyDiscount(10); 
     } else {
       alert("Invalid Code!");
       onApplyDiscount(0);
